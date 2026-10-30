@@ -5,7 +5,7 @@ Celestia Mocha Testnet çok uzun zamandır devam ediyor ve Mainnet sonrası da d
 NOT: Full Storage Node tipi celestia-node'dan kaldırıldı. Bütün veriyi tutmak isteyenler Bridge Node'u --archival ile çalıştırabilir.
 
 ```
-curl -s https://raw.githubusercontent.com/okannako/celestiamochascript/main/nodescript.sh > nodescript.sh && chmod +x nodescript.sh && ./nodescript.sh
+curl -s https://raw.githubusercontent.com/okannako/celestiamochascript-tr/main/nodescript.sh > nodescript.sh && chmod +x nodescript.sh && ./nodescript.sh
 ```
 
 ### bbr Aktif Hale Getirmek (Mutlaka Yapın)
