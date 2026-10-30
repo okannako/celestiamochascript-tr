@@ -1,24 +1,32 @@
 ![(22)](https://github.com/okannako/celestiamochascript/assets/73176377/f005e199-f5f9-4002-a444-e683baa2f01b)
 
-Celestia Mocha Testnet çok uzun zamandır devam ediyor ve Mainnet sonrası da çalışmaya durmadan devam etti. Celestia ekibi geliştirmelerine bu ağ üzerinden devam ediyor. Aşağıda oluşturdğum scriptin kodları var. Çalıştırdğınızda kurmak istediğiniz node'u seçenekler arasından seçip çok kısa sürede kurulmasını sağlayabilirsiniz. Validator, Fibre, Bridge, Light ve Full Storage nodeların kurulumlarının yanı sıra diğer işlemler için de seçenekler bulunmaktadır.
+Celestia Mocha Testnet çok uzun zamandır devam ediyor ve Mainnet sonrası da durmadan çalışmaya devam etti. Celestia ekibi geliştirmelerini bu ağ üzerinden sürdürüyor. Ağ şu an mocha-5 üzerinde çalışıyor (mocha-4'teki validatorler taşınmadı, mocha-5'te yeniden oluşturulması gerekiyor). Aşağıda oluşturduğum scriptin kodları var. Çalıştırdığınızda kurmak istediğiniz node'u seçenekler arasından seçip çok kısa sürede kurulmasını sağlayabilirsiniz. Validator, Fibre, Bridge ve Light Node kurulumlarının yanı sıra diğer işlemler için de seçenekler bulunmaktadır. Script güncel sürümlere göre hazırlanmıştır (celestia-app v10.5.0-mocha, celestia-node v0.34.4-mocha).
+
+NOT: Full Storage Node tipi celestia-node'dan kaldırıldı. Bütün veriyi tutmak isteyenler Bridge Node'u --archival ile çalıştırabilir.
 
 ```
 curl -s https://raw.githubusercontent.com/okannako/celestiamochascript/main/nodescript.sh > nodescript.sh && chmod +x nodescript.sh && ./nodescript.sh
 ```
 
 ### bbr Aktif Hale Getirmek (Mutlaka Yapın)
-- Aşağıdaki kodları girerek basit bir şekilde aktifleştirebilirsiniz.
+- Validator kurulumunda script bunu otomatik yapar. Bridge veya Light Node kurduysanız ya da kontrol etmek isterseniz aşağıdaki kodları girebilirsiniz.
 ```
-cd celestia-app
-make enable-bbr
+cd $HOME/celestia-app
+make bbr-enable
+make bbr-check
 ```
 
 - Eğer yukarıdaki kodlarda hata alırsanız aşağıdaki kodla aktif hale getirebilirsiniz.
 ```
-sudo modprobe tcp_bbr; \
-        echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf; \
-        echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf; \
-        sudo sysctl -p; \
+sudo modprobe tcp_bbr
+echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
 ```
 
-Kurulumn sırasında veya sonrasında bir şey sormak isterseniz bana Telegram, Mail ve Discord yoluyla ulaşabirsiniz.
+- Aktiflik kontrolünü aşağıdaki kodla yaptığınızda sonuç olarak `bbr` vermelidir.
+```
+sysctl net.ipv4.tcp_congestion_control | awk '{print $3}'
+```
+
+Kurulum sırasında veya sonrasında bir şey sormak isterseniz bana Telegram, Mail ve Discord yoluyla ulaşabilirsiniz.
