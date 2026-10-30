@@ -1,4 +1,4 @@
-![(22)](https://github.com/okannako/celestiamochascript/assets/73176377/f005e199-f5f9-4002-a444-e683baa2f01b)
+<img width="1024" height="572" alt="image" src="https://github.com/user-attachments/assets/c1541f49-7512-48e5-b977-763c08a3e528" />
 
 Celestia Mocha Testnet çok uzun zamandır devam ediyor ve Mainnet sonrası da durmadan çalışmaya devam etti. Celestia ekibi geliştirmelerini bu ağ üzerinden sürdürüyor. Ağ şu an mocha-5 üzerinde çalışıyor (mocha-4'teki validatorler taşınmadı, mocha-5'te yeniden oluşturulması gerekiyor). Aşağıda oluşturduğum scriptin kodları var. Çalıştırdığınızda kurmak istediğiniz node'u seçenekler arasından seçip çok kısa sürede kurulmasını sağlayabilirsiniz. Validator, Fibre, Bridge ve Light Node kurulumlarının yanı sıra diğer işlemler için de seçenekler bulunmaktadır. Script güncel sürümlere göre hazırlanmıştır (celestia-app v10.5.0-mocha, celestia-node v0.34.4-mocha).
 
